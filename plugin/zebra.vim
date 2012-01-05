@@ -75,7 +75,7 @@ if !hasmapto('<Plug>ZebraOff')
   map <unique> <Leader>Z <Plug>ZebraOff
 endif
 
-command! -nargs=0 -bang -buffer Zebra call ZebraToggle('<bang>')
+command! -nargs=0 -bang Zebra call ZebraToggle('<bang>')
 
 " Teardown:{{{1
 "reset &cpo back to users setting

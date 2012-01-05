@@ -1,0 +1,71 @@
+*zebra.txt*  -  Stripe your edits
+
+Author:   Barry Arthur <barry dot arthur at gmail dot com>
+
+License: Same terms as Vim itself (see |license|)
+
+                                                *zebra*
+INTRODUCTION ~
+
+Zebra provides line striping to more easily distinguish alternating
+lines when editing painfully boring and similar row based data.
+
+                                      *zebra-operation*
+OPERATION ~
+
+The easiest way to control Zebra is through the on/off key maps
+(respectively, <leader>z / <leader>Z by default (but can be overridden
+- see |zebra-keymaps|))
+
+There is also a command, :Zebra[!] which turns Zebra on. If ! is
+present it turns Zebra off.
+
+Additionally, the following functions are available to control Zebra
+through Vimscript:
+
+* ZebraOn()
+* ZebraOff()
+* ZebraToggle(boolean)
+
+                                  *zebra-configuration*
+CONFIGURATION ~
+
+Several aspects of Zebra can be configured from your $HOME/.vimrc
+file. Control whether Zebra is on automatically when Vim starts, the
+colour of the highlighting and the keys used to turn Zebra on and off.
+
+                                  *zebra-activation*
+Automatic Activation ~
+
+Zebra is disabled by default. To enable it automatically, add the
+following line to your $HOME/.vimrc:
+>
+  let g:zebra = 1
+<
+
+                                  *zebra-highlighting*
+Highlighting ~
+
+The Zebra highlight group defines the colours and attributes of the
+striped lines (green background by default). This can be changed by
+adding a line like the following to your $HOME/.vimrc:
+>
+  hi Zebra ctermbg=grey guibg=grey
+<
+
+                                  *zebra-keymaps*
+Key Maps ~
+
+By default, Zebra is turned on with the key map <leader>z and off with
+<leader>Z.
+
+Zebra uses <plug> maps so you can override the defaults. Here is an
+example you could put in your $HOME/.vimrc:
+
+>
+  nmap <leader>x <plug>ZebraOn
+  nmap <leader>X <plug>ZebraOff
+<
+
+
+ vim:tw=78:ts=8:ft=help:norl:
