@@ -68,11 +68,11 @@ nnoremap <Plug>ZebraOn  :call ZebraOn()<cr>
 nnoremap <Plug>ZebraOff :call ZebraOff()<cr>
 
 if !hasmapto('<Plug>ZebraOn')
-  map <unique> <Leader>z <Plug>ZebraOn
+  nmap <unique> <Leader>z <Plug>ZebraOn
 endif
 
 if !hasmapto('<Plug>ZebraOff')
-  map <unique> <Leader>Z <Plug>ZebraOff
+  nmap <unique> <Leader>Z <Plug>ZebraOff
 endif
 
 command! -nargs=0 -bang Zebra call ZebraToggle('<bang>')
