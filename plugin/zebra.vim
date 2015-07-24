@@ -1,8 +1,7 @@
 " ============================================================================
 " File:        zebra - Stripe your edits
-" Description: Alternate line striper to disambiguate lines
+" Description: Line striper to disambiguate lines
 " Author:      Barry Arthur <barry dot arthur at gmail dot com>
-" Last Change: 5 January, 2012
 " Website:     http://github.com/dahu/vim-zebra
 "
 " See zebra.txt for help.  This can be accessed by doing:
@@ -12,11 +11,15 @@
 "
 " Licensed under the same terms as Vim itself.
 " ============================================================================
-let s:Zebra_version = '0.0.2'
+let s:Zebra_version = '0.0.3'
 
 " Vimscript setup {{{1
 let s:old_cpo = &cpo
 set cpo&vim
+
+if !exists('g:zebra_gap')
+  let zebra_gap = 2
+endif
 
 " Highlight
 try | silent hi Zebra | catch /^Vim\%((\a\+)\)\=:E411/ | hi Zebra ctermbg=green guibg=green | endtry
@@ -33,7 +36,7 @@ function! Zebra()
     let b:zebra = g:zebra
   endif
   if b:zebra
-    exe "match Zebra /" . join(map(filter(range(line('w0'),line('w$')), 'v:val % 2'), '"\\%".v:val."l"'), '\|') . "/"
+    exe "match Zebra /" . join(map(filter(range(line('w0'),line('w$')), 'v:val % g:zebra_gap == 0'), '"\\%".v:val."l"'), '\|') . "/"
   else
     match Zebra //
   endif

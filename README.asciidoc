@@ -2,3 +2,8 @@ Vim Zebra
 ---------
 
 Stripe your edits.
+
+By default, vim-zebra stripes every other line, however you can control
+the gap with a line like this in your ~/.vimrc:
+
+  let zebra_gap = 10
